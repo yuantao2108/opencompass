@@ -1,3 +1,7 @@
+from .evaluators import LVEvalF1Evaluator  # noqa: F401, F403
+from .evaluators import LVEvalOPTF1Evaluator  # noqa: F401, F403
+from .evaluators import LVEvalOPTRougeEvaluator  # noqa: F401, F403
+
 from lveval_hotpotwikiqa_mixup import *
 from lveval_loogle_SD_mixup import *
 from lveval_loogle_CR_mixup import *

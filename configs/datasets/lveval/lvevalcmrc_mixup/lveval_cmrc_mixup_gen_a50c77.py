@@ -1,38 +1,48 @@
 from opencompass.openicl.icl_prompt_template import PromptTemplate
 from opencompass.openicl.icl_retriever import ZeroRetriever
 from opencompass.openicl.icl_inferencer import GenInferencer
-from opencompass.datasets import LongBenchF1Evaluator, LongBench2wikimqaDataset
+from opencompass.datasets import LVEvalOPTF1Evaluator, LVEvalcmrcDataset
 
-LongBench_2wikimqa_reader_cfg = dict(
+LVEval_cmrc_mixup_reader_cfg = dict(
     input_columns=['context', 'input'],
     output_column='answers',
     train_split='test',
     test_split='test'
 )
 
-LongBench_2wikimqa_infer_cfg = dict(
+LVEval_cmrc_mixup_infer_cfg = dict(
     prompt_template=dict(
         type=PromptTemplate,
         template=dict(
             round=[
-                dict(role='HUMAN', prompt='Answer the question based on the given passages. Only give me the answer and do not output any other words.\n\nThe following are given passages.\n{context}\n\nAnswer the question based on the given passages. Only give me the answer and do not output any other words.\n\nQuestion: {input}\nAnswer:'),
+                dict(role='HUMAN', prompt="请根据下面给定的文章回答问题，问题和答案只与其中一篇文章有关。\n\n文章：{context}\n\n现在请基于上述文章回答下面的问题，问题和答案只与其中一篇文章有关。\n\n问题：{input}\n回答："),
             ], )),
     retriever=dict(type=ZeroRetriever),
-    inferencer=dict(type=GenInferencer, max_out_len=32)
+    inferencer=dict(type=GenInferencer, max_out_len=64)
 )
 
-LongBench_2wikimqa_eval_cfg = dict(
-    evaluator=dict(type=LongBenchF1Evaluator),
+LVEval_cmrc_mixup_eval_cfg = dict(
+    evaluator=dict(type=LVEvalOPTF1Evaluator),
     pred_role='BOT'
 )
 
-LongBench_2wikimqa_datasets = [
+DATASET_LENGTH_LEVEL = [
+    '16k', '32k', '64k', '128k', '256k'
+]
+
+def get_dataset_names(dataset_name, length_levels):
+    datasets = []
+    for length in length_levels:
+        datasets.append(f"{dataset_name}_{length}")
+    return datasets
+
+LVEval_cmrc_mixup_datasets = [
     dict(
-        type=LongBench2wikimqaDataset,
-        abbr='LongBench_2wikimqa',
-        path='THUDM/LongBench',
-        name='2wikimqa',
-        reader_cfg=LongBench_2wikimqa_reader_cfg,
-        infer_cfg=LongBench_2wikimqa_infer_cfg,
-        eval_cfg=LongBench_2wikimqa_eval_cfg)
+        type=LVEvalcmrcDataset,
+        abbr='LVEval_cmrc_mixup',
+        path='Infinigence/LVEval',
+        name=name_len,
+        reader_cfg=LVEval_cmrc_mixup_reader_cfg,
+        infer_cfg=LVEval_cmrc_mixup_infer_cfg,
+        eval_cfg=LVEval_cmrc_mixup_eval_cfg) for name_len in get_dataset_names("cmrc_mixup", DATASET_LENGTH_LEVEL)
 ]
