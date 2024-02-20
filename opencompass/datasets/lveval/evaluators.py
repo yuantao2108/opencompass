@@ -21,6 +21,7 @@ ABANDON_WORDS_EN = ['and', 'to', 'of', 'in', 'her', 'was', 'with', 'for',
                     'they', 'or', 'at', 'because', 'be', 'on', 'are', 'their', 
                     'what', 'as', 'had', 'were', 'about', 'being', 'this', 
                     'who', 'but', 'have', 'has', 'when', 'which', 'does']
+
 ABANDON_WORDS_ZH = ['的', '和', '是', '等', '在', '年', '可以', '为', '与', 
                     '‰', '了', '或', '一种', '月', 'c', '至', '日', '有', 
                     '进行', '于', '不', '中', '×', '根据', '小', '由', '亩', 
@@ -142,8 +143,8 @@ class LVEvalOPTF1Evaluator(BaseEvaluator):
         assert language in ['en', 'zh']
         self.language = language
 
-    def score(self, predictions: List, references: List, answer_keywords: List) -> dict:
-
+    def score(self, predictions: List, references: List) -> dict:
+        answer_keywords = references[-1]
         def f1_score(prediction, reference, **kwargs):
             common = Counter(prediction) & Counter(reference)
             num_same = sum(common.values())

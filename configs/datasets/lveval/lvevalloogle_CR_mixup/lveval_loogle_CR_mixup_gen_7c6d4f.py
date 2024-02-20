@@ -4,9 +4,9 @@ from opencompass.openicl.icl_inferencer import GenInferencer
 from opencompass.datasets import LVEvalOPTF1Evaluator, LVEvallooglecrDataset
 
 LVEval_loogle_CR_mixup_reader_cfg = dict(
-    input_columns=['context', 'input'],
+    input_columns=['context', 'input', 'answer_keywords'],
     output_column='answers',
-    extra_column='answer_keywords',
+    # extra_column='answer_keywords',
     train_split='test',
     test_split='test'
 )
@@ -40,7 +40,7 @@ def get_dataset_names(dataset_name, length_levels):
 LVEval_loogle_CR_mixup_datasets = [
     dict(
         type=LVEvallooglecrDataset,
-        abbr='LVEval_loogle_CR_mixup',
+        abbr='LVEval_' + name_len,
         path='Infinigence/LVEval',
         name=name_len,
         reader_cfg=LVEval_loogle_CR_mixup_reader_cfg,

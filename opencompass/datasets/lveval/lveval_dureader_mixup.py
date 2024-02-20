@@ -16,10 +16,11 @@ class LVEvaldureaderDataset(BaseDataset):
         for i in range(len(dataset[split])):
             question = dataset[split]['input'][i]
             context = dataset[split]['context'][i]
-            
+            answers = dataset[split]['answers'][i]
             raw_data.append({
                 'input': question,
                 'context': context,
+                'answers': answers,
             })
         dataset[split] = Dataset.from_list(raw_data)
         return dataset

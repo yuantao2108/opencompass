@@ -21,7 +21,8 @@ class LVEvallooglesdDataset(BaseDataset):
             raw_data.append({
                 'input': question,
                 'context': context,
-                'answers': answers,
+                'answers_': answers,
+                'answers': answers.append(answer_keywords),
                 'answer_keywords':answer_keywords,
             })
         dataset[split] = Dataset.from_list(raw_data)

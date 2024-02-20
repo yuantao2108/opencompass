@@ -39,7 +39,7 @@ def get_dataset_names(dataset_name, length_levels):
 LVEval_factrecall_zh_datasets = [
     dict(
         type=LVEvalfactrecallzhDataset,
-        abbr='LVEval_factrecall_zh',
+        abbr='LVEval_' + name_len,
         path='Infinigence/LVEval',
         name=name_len,
         reader_cfg=LVEval_factrecall_zh_reader_cfg,

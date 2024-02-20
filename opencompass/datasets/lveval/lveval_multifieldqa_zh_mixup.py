@@ -22,7 +22,8 @@ class LVEvalmultifieldqazhDataset(BaseDataset):
             raw_data.append({
                 'input': question,
                 'context': context,
-                'answers': answers,
+                'answers_': answers,
+                'answers': answers.append(answer_keywords),
                 'confusing_facts':confusing_facts,
                 'answer_keywords':answer_keywords,
             })

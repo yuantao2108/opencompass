@@ -306,7 +306,7 @@ def main():
             for task in tasks:
                 cfg.attack.dataset = task.datasets[0][0].abbr
                 task.attack = cfg.attack
-        from IPython import embed;embed()
+        
         runner(tasks)
 
     # evaluate
@@ -343,7 +343,7 @@ def main():
             return
         
         runner = RUNNERS.build(cfg.eval.runner)
-        from IPython import embed;embed()
+        
         runner(tasks)
 
     # visualize

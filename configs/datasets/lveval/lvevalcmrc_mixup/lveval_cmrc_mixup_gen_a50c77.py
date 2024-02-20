@@ -39,7 +39,7 @@ def get_dataset_names(dataset_name, length_levels):
 LVEval_cmrc_mixup_datasets = [
     dict(
         type=LVEvalcmrcDataset,
-        abbr='LVEval_cmrc_mixup',
+        abbr='LVEval_' + name_len,
         path='Infinigence/LVEval',
         name=name_len,
         reader_cfg=LVEval_cmrc_mixup_reader_cfg,

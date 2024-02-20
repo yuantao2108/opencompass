@@ -13,4 +13,4 @@ with read_base():
     from .lvevalmultifieldqa_en_mixup.lveval_multifieldqa_en_mixup_gen import LVEval_multifieldqa_en_mixup_datasets
     from .lvevalmultifieldqa_zh_mixup.lveval_multifieldqa_zh_mixup_gen import LVEval_multifieldqa_zh_mixup_datasets
 
-longbench_datasets = sum((v for k, v in locals().items() if k.endswith('_datasets')), [])
+LVEval_datasets = sum((v for k, v in locals().items() if k.endswith('_datasets')), [])
