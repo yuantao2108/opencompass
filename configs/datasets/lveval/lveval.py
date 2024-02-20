@@ -1,26 +1,16 @@
 from mmengine.config import read_base
 
 with read_base():
-    from .longbench2wikimqa.longbench_2wikimqa_gen import LongBench_2wikimqa_datasets
-    from .longbenchhotpotqa.longbench_hotpotqa_gen import LongBench_hotpotqa_datasets
-    from .longbenchmusique.longbench_musique_gen import LongBench_musique_datasets
-    from .longbenchmultifieldqa_en.longbench_multifieldqa_en_gen import LongBench_multifieldqa_en_datasets
-    from .longbenchmultifieldqa_zh.longbench_multifieldqa_zh_gen import LongBench_multifieldqa_zh_datasets
-    from .longbenchnarrativeqa.longbench_narrativeqa_gen import LongBench_narrativeqa_datasets
-    from .longbenchqasper.longbench_qasper_gen import LongBench_qasper_datasets
-    from .longbenchtriviaqa.longbench_triviaqa_gen import LongBench_triviaqa_datasets
-    from .longbenchgov_report.longbench_gov_report_gen import LongBench_gov_report_datasets
-    from .longbenchqmsum.longbench_qmsum_gen import LongBench_qmsum_datasets
-    from .longbenchvcsum.longbench_vcsum_gen import LongBench_vcsum_datasets
-    from .longbenchdureader.longbench_dureader_gen import LongBench_dureader_datasets
-    from .longbenchlcc.longbench_lcc_gen import LongBench_lcc_datasets
-    from .longbenchrepobench.longbench_repobench_gen import LongBench_repobench_datasets
-    from .longbenchpassage_retrieval_en.longbench_passage_retrieval_en_gen import LongBench_passage_retrieval_en_datasets
-    from .longbenchpassage_retrieval_zh.longbench_passage_retrieval_zh_gen import LongBench_passage_retrieval_zh_datasets
-    from .longbenchpassage_count.longbench_passage_count_gen import LongBench_passage_count_datasets
-    from .longbenchtrec.longbench_trec_gen import LongBench_trec_datasets
-    from .longbenchlsht.longbench_lsht_gen import LongBench_lsht_datasets
-    from .longbenchmulti_news.longbench_multi_news_gen import LongBench_multi_news_datasets
-    from .longbenchsamsum.longbench_samsum_gen import LongBench_samsum_datasets
-    
+    from .lvevalcmrc_mixup.lveval_cmrc_mixup_gen import LVEval_cmrc_mixup_datasets
+    from .lvevaldureader_mixup.lveval_dureader_mixup_gen import LVEval_dureader_mixup_datasets
+    from .lvevalfactrecall_en.lveval_factrecall_en_gen import LVEval_factrecall_en_datasets
+    from .lvevalfactrecall_zh.lveval_factrecall_zh_gen import LVEval_factrecall_zh_datasets
+    from .lvevalhotpotwikiqa_mixup.lveval_hotpotwikiqa_mixup_gen import LVEval_hotpotwikiqa_mixup_datasets
+    from .lvevallic_mixup.lveval_lic_mixup_gen import LVEval_lic_mixup_datasets
+    from .lvevalloogle_CR_mixup.lveval_loogle_CR_mixup_gen import LVEval_loogle_CR_mixup_datasets
+    from .lvevalloogle_MIR_mixup.lveval_loogle_MIR_mixup_gen import LVEval_loogle_MIR_mixup_datasets
+    from .lvevalloogle_SD_mixup.lveval_loogle_SD_mixup_gen import LVEval_loogle_SD_mixup_datasets
+    from .lvevalmultifieldqa_en_mixup.lveval_multifieldqa_en_mixup_gen import LVEval_multifieldqa_en_mixup_datasets
+    from .lvevalmultifieldqa_zh_mixup.lveval_multifieldqa_zh_mixup_gen import LVEval_multifieldqa_zh_mixup_datasets
+
 longbench_datasets = sum((v for k, v in locals().items() if k.endswith('_datasets')), [])
