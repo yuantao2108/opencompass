@@ -1,24 +1,14 @@
 from .evaluators import LVEvalF1Evaluator  # noqa: F401, F403
 from .evaluators import LVEvalOPTF1Evaluator  # noqa: F401, F403
 from .evaluators import LVEvalOPTRougeEvaluator  # noqa: F401, F403
-from .longbench_2wikim_qa import *  # noqa: F401, F403
-from .longbench_dureader import *  # noqa: F401, F403
-from .longbench_gov_report import *  # noqa: F401, F403
-from .longbench_hotpot_qa import *  # noqa: F401, F403
-from .longbench_lcc import *  # noqa: F401, F403
-from .longbench_lsht import *  # noqa: F401, F403
-from .longbench_multi_news import *  # noqa: F401, F403
-from .longbench_multifieldqa_en import *  # noqa: F401, F403
-from .longbench_multifieldqa_zh import *  # noqa: F401, F403
-from .longbench_musique import *  # noqa: F401, F403
-from .longbench_narrative_qa import *  # noqa: F401, F403
-from .longbench_passage_count import *  # noqa: F401, F403
-from .longbench_passage_retrieval_en import *  # noqa: F401, F403
-from .longbench_passage_retrieval_zh import *  # noqa: F401, F403
-from .longbench_qasper import *  # noqa: F401, F403
-from .longbench_qmsum import *  # noqa: F401, F403
-from .longbench_repobench import *  # noqa: F401, F403
-from .longbench_samsum import *  # noqa: F401, F403
-from .longbench_trec import *  # noqa: F401, F403
-from .longbench_trivia_qa import *  # noqa: F401, F403
-from .longbench_vcsum import *  # noqa: F401, F403
+from .lveval_hotpotwikiqa_mixup import *
+from .lveval_loogle_SD_mixup import *
+from .lveval_loogle_CR_mixup import *
+from .lveval_loogle_MIR_mixup import *
+from .lveval_multifieldqa_en_mixup import *
+from .lveval_multifieldqa_zh_mixup import *
+from .lveval_factrecall_en import *
+from .lveval_factrecall_zh import *
+from .lveval_cmrc_mixup import *
+from .lveval_lic_mixup import *
+from .lveval_dureader_mixup import *
