@@ -3,7 +3,7 @@ from opencompass.openicl.icl_retriever import ZeroRetriever
 from opencompass.openicl.icl_inferencer import GenInferencer
 from opencompass.datasets import LVEvalOPTF1Evaluator, LVEvalmultifieldqaenDataset
 
-LongBench_multifieldqa_en_mixup_reader_cfg = dict(
+LVEval_multifieldqa_en_mixup_reader_cfg = dict(
     input_columns=['context', 'input'],
     output_column='answers',
     extra_column='answer_keywords',
@@ -11,7 +11,7 @@ LongBench_multifieldqa_en_mixup_reader_cfg = dict(
     test_split='test'
 )
 
-LongBench_multifieldqa_en_mixup_infer_cfg = dict(
+LVEval_multifieldqa_en_mixup_infer_cfg = dict(
     prompt_template=dict(
         type=PromptTemplate,
         template=dict(
@@ -22,18 +22,29 @@ LongBench_multifieldqa_en_mixup_infer_cfg = dict(
     inferencer=dict(type=GenInferencer, max_out_len=64)
 )
 
-LongBench_multifieldqa_en_mixup_eval_cfg = dict(
+LVEval_multifieldqa_en_mixup_eval_cfg = dict(
     evaluator=dict(type=LVEvalOPTF1Evaluator),
     pred_role='BOT'
 )
 
-LongBench_multifieldqa_en_mixup_datasets = [
+DATASET_LENGTH_LEVEL = [
+    '16k', '32k', '64k', '128k', '256k'
+]
+
+def get_dataset_names(dataset_name, length_levels):
+    datasets = []
+    for length in length_levels:
+        datasets.append(f"{dataset_name}_{length}")
+    return datasets
+
+LVEval_multifieldqa_en_mixup_datasets = [
     dict(
         type=LVEvalmultifieldqaenDataset,
-        abbr='LongBench_multifieldqa_en_mixup',
+        abbr='LVEval_multifieldqa_en_mixup',
         path='Infinigence/LVEval',
-        name='multifieldqa_en_mixup',
-        reader_cfg=LongBench_multifieldqa_en_mixup_reader_cfg,
-        infer_cfg=LongBench_multifieldqa_en_mixup_infer_cfg,
-        eval_cfg=LongBench_multifieldqa_en_mixup_eval_cfg)
+        name=name_len,
+        reader_cfg=LVEval_multifieldqa_en_mixup_reader_cfg,
+        infer_cfg=LVEval_multifieldqa_en_mixup_infer_cfg,
+        eval_cfg=LVEval_multifieldqa_en_mixup_eval_cfg) 
+        for name_len in get_dataset_names("multifieldqa_en_mixup", DATASET_LENGTH_LEVEL)
 ]
