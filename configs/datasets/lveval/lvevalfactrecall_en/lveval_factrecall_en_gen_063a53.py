@@ -18,7 +18,7 @@ LVEval_factrecall_en_infer_cfg = dict(
                 dict(role='HUMAN', prompt="Please answer the following questions based on the given article.\n\nArticle: {context}\n\nPlease answer the following questions based on the above article.\n\nQuestion: {input}\nAnswer:"),
             ], )),
     retriever=dict(type=ZeroRetriever),
-    inferencer=dict(type=GenInferencer, max_out_len=64)
+    inferencer=dict(type=GenInferencer, max_out_len=16)
 )
 
 LVEval_factrecall_en_eval_cfg = dict(

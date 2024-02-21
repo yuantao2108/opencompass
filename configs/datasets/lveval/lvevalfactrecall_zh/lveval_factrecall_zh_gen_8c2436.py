@@ -18,7 +18,7 @@ LVEval_factrecall_zh_infer_cfg = dict(
                 dict(role='HUMAN', prompt="请基于给定的文章回答下述问题。\n\n文章：{context}\n\n现在请基于上述文章回答下面的问题。\n\n问题：{input}\n回答："),
             ], )),
     retriever=dict(type=ZeroRetriever),
-    inferencer=dict(type=GenInferencer, max_out_len=64)
+    inferencer=dict(type=GenInferencer, max_out_len=16)
 )
 
 LVEval_factrecall_zh_eval_cfg = dict(

@@ -63,6 +63,7 @@ class OpenICLInferTask(BaseTask):
             self.batch_size = model_cfg.get('batch_size', None)
             self.min_out_len = model_cfg.get('min_out_len', None)
             self.model = build_model_from_cfg(model_cfg)
+            # from IPython import embed;embed()
 
             for dataset_cfg in dataset_cfgs:
                 self.model_cfg = model_cfg
@@ -107,6 +108,7 @@ class OpenICLInferTask(BaseTask):
                                 self.min_out_len)
         self._set_default_value(inferencer_cfg, 'batch_size', self.batch_size)
         inferencer_cfg['max_seq_len'] = self.model_cfg.get('max_seq_len')
+        print(inferencer_cfg['max_seq_len'])
         inferencer = ICL_INFERENCERS.build(inferencer_cfg)
 
         out_path = get_infer_output_path(

@@ -1,3 +1,4 @@
+import numpy
 import argparse
 import getpass
 import os
@@ -310,6 +311,7 @@ def main():
         runner(tasks)
 
     # evaluate
+    # from IPython import embed;embed()
     if args.mode in ['all', 'eval']:
         # When user have specified --slurm or --dlc, or have not set
         # "eval" in config, we will provide a default configuration
