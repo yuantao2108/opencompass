@@ -63,7 +63,6 @@ class OpenICLInferTask(BaseTask):
             self.batch_size = model_cfg.get('batch_size', None)
             self.min_out_len = model_cfg.get('min_out_len', None)
             self.model = build_model_from_cfg(model_cfg)
-            # from IPython import embed;embed()
 
             for dataset_cfg in dataset_cfgs:
                 self.model_cfg = model_cfg

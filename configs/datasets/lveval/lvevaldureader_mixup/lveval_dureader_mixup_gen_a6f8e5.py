@@ -22,7 +22,7 @@ LVEval_dureader_mixup_infer_cfg = dict(
 )
 
 LVEval_dureader_mixup_eval_cfg = dict(
-    evaluator=dict(type=LVEvalOPTRougeEvaluator),
+    evaluator=dict(type=LVEvalOPTRougeEvaluator, language='zh'),
     pred_role='BOT'
 )
 

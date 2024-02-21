@@ -22,7 +22,7 @@ LVEval_multifieldqa_zh_mixup_infer_cfg = dict(
 )
 
 LVEval_multifieldqa_zh_mixup_eval_cfg = dict(
-    evaluator=dict(type=LVEvalOPTF1Evaluator),
+    evaluator=dict(type=LVEvalOPTF1Evaluator, language='zh'),
     pred_role='BOT'
 )
 

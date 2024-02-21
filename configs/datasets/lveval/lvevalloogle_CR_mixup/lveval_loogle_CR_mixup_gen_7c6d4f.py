@@ -22,7 +22,7 @@ LVEval_loogle_CR_mixup_infer_cfg = dict(
 )
 
 LVEval_loogle_CR_mixup_eval_cfg = dict(
-    evaluator=dict(type=LVEvalOPTF1Evaluator),
+    evaluator=dict(type=LVEvalOPTF1Evaluator, language='en'),
     pred_role='BOT'
 )
 

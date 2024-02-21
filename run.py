@@ -311,7 +311,7 @@ def main():
         runner(tasks)
 
     # evaluate
-    # from IPython import embed;embed()
+    
     if args.mode in ['all', 'eval']:
         # When user have specified --slurm or --dlc, or have not set
         # "eval" in config, we will provide a default configuration
@@ -345,18 +345,17 @@ def main():
             return
         
         runner = RUNNERS.build(cfg.eval.runner)
-        
         runner(tasks)
 
     # visualize
     if args.mode in ['all', 'eval', 'viz']:
-        # from IPython import embed;embed()
+        
         summarizer_cfg = cfg.get('summarizer', {})
         if not summarizer_cfg or summarizer_cfg.get('type', None) is None:
             summarizer_cfg['type'] = DefaultSummarizer
         summarizer_cfg['config'] = cfg
         summarizer = build_from_cfg(summarizer_cfg)
-        # from IPython import embed;embed()
+        
         summarizer.summarize(time_str=cfg_time_str)
 
 

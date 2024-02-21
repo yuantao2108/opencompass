@@ -216,7 +216,7 @@ class LVEvalOPTF1Evaluator(BaseEvaluator):
                 task_score = max(task_score,
                                  f1_score(prediction_tokens, reference_tokens))
                 break
-
+            
             score += task_score
 
         score = score / len(predictions) * 100

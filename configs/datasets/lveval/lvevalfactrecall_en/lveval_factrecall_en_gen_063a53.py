@@ -22,7 +22,7 @@ LVEval_factrecall_en_infer_cfg = dict(
 )
 
 LVEval_factrecall_en_eval_cfg = dict(
-    evaluator=dict(type=LVEvalF1Evaluator),
+    evaluator=dict(type=LVEvalF1Evaluator, language='en'),
     pred_role='BOT'
 )
 
