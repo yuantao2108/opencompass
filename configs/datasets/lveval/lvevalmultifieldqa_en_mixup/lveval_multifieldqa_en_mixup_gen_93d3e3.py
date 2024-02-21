@@ -4,9 +4,8 @@ from opencompass.openicl.icl_inferencer import GenInferencer
 from opencompass.datasets import LVEvalOPTF1Evaluator, LVEvalmultifieldqaenDataset
 
 LVEval_multifieldqa_en_mixup_reader_cfg = dict(
-    input_columns=['context', 'input', 'answer_keywords'],
+    input_columns=['context', 'input'],
     output_column='answers',
-    # extra_column='answer_keywords',
     train_split='test',
     test_split='test'
 )

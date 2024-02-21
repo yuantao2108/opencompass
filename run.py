@@ -350,11 +350,13 @@ def main():
 
     # visualize
     if args.mode in ['all', 'eval', 'viz']:
+        # from IPython import embed;embed()
         summarizer_cfg = cfg.get('summarizer', {})
         if not summarizer_cfg or summarizer_cfg.get('type', None) is None:
             summarizer_cfg['type'] = DefaultSummarizer
         summarizer_cfg['config'] = cfg
         summarizer = build_from_cfg(summarizer_cfg)
+        # from IPython import embed;embed()
         summarizer.summarize(time_str=cfg_time_str)
 
 

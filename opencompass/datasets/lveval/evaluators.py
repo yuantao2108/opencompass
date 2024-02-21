@@ -132,7 +132,7 @@ class LVEvalF1Evaluator(BaseEvaluator):
             score += task_score
 
         score = score / len(predictions) * 100
-        return {'score': score}
+        return {'f1': score}
 
 
 @ICL_EVALUATORS.register_module()
@@ -144,7 +144,6 @@ class LVEvalOPTF1Evaluator(BaseEvaluator):
         self.language = language
 
     def score(self, predictions: List, references: List) -> dict:
-        answer_keywords = references[-1]
         def f1_score(prediction, reference, **kwargs):
             common = Counter(prediction) & Counter(reference)
             num_same = sum(common.values())
@@ -159,7 +158,7 @@ class LVEvalOPTF1Evaluator(BaseEvaluator):
         for i in range(len(predictions)):
             prediction = predictions[i]
             reference_list = references[i]
-            answer_keyword = answer_keywords[i]
+            answer_keyword = reference_list[-1]
             task_score = 0.
             for reference in reference_list:
                 if self.language == 'en':
@@ -221,7 +220,7 @@ class LVEvalOPTF1Evaluator(BaseEvaluator):
             score += task_score
 
         score = score / len(predictions) * 100
-        return {'score': score}
+        return {'LVEval_f1': score}
 
 
 @ICL_EVALUATORS.register_module()
@@ -274,4 +273,4 @@ class LVEvalOPTRougeEvaluator(BaseEvaluator):
             score += task_score
 
         score = score / len(predictions) * 100
-        return {'score': score}
+        return {'LVEval_rouge': score}

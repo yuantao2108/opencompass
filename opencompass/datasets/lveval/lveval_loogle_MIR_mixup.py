@@ -18,11 +18,12 @@ class LVEvallooglemirDataset(BaseDataset):
             context = dataset[split]['context'][i]
             answers = dataset[split]['answers'][i]
             answer_keywords = dataset[split]['answer_keywords'][i]
+            answers_with_ak = answers + [answer_keywords]
             raw_data.append({
                 'input': question,
                 'context': context,
-                'answers_': answers,
-                'answers': answers.append(answer_keywords),
+                # 'answers': answers,
+                'answers': answers_with_ak,
                 'answer_keywords':answer_keywords,
             })
         dataset[split] = Dataset.from_list(raw_data)

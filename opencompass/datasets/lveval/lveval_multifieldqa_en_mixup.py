@@ -19,11 +19,12 @@ class LVEvalmultifieldqaenDataset(BaseDataset):
             answers = dataset[split]['answers'][i]
             confusing_facts = dataset[split]['confusing_facts'][i]
             answer_keywords = dataset[split]['answer_keywords'][i]
+            answers_with_ak = answers + [answer_keywords]
             raw_data.append({
                 'input': question,
                 'context': context,
-                'answers_': answers,
-                'answers': answers.append(answer_keywords),
+                # 'answers': answers,
+                'answers': answers_with_ak,
                 'confusing_facts':confusing_facts,
                 'answer_keywords':answer_keywords,
             })
