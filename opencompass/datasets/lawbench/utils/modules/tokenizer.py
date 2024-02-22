@@ -35,7 +35,9 @@ class Tokenizer:
                  input_strings: List[str]
                  ) -> List:
         """分词函数 :param input_strings: 需要分词的字符串列表 :return:
-        分词后的结果列表，由元组组成，元组为(token,pos_tag,pinyin)的形式."""
+
+        分词后的结果列表，由元组组成，元组为(token,pos_tag,pinyin)的形式.
+        """
         if not self.segmented:
             input_strings = ["".join(s.split(" ")) for s in input_strings]
         results = self.tokenizer(input_strings)

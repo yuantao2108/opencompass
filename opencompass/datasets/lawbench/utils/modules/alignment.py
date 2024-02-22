@@ -52,7 +52,9 @@ class Alignment:
             granularity: str = "word",
             ) -> None:
         """构造函数 :param semantic_dict: 语义词典（大词林） :param confusion_dict:
-        字符混淆集."""
+
+        字符混淆集.
+        """
         self.insertion_cost = 1
         self.deletion_cost = 1
         self.semantic_dict = semantic_dict
@@ -106,7 +108,9 @@ class Alignment:
 
     def _get_semantic_cost(self, a, b):
         """计算基于语义信息的替换操作cost :param a: 单词a的语义类别 :param b: 单词b的语义类别 :return:
-        替换编辑代价."""
+
+        替换编辑代价.
+        """
         a_class = self._get_semantic_class(a)
         b_class = self._get_semantic_class(b)
         # unknown class, default to 1
@@ -119,7 +123,9 @@ class Alignment:
 
     def _get_pos_cost(self, a_pos, b_pos):
         """计算基于词性信息的编辑距离cost :param a_pos: 单词a的词性 :param b_pos: 单词b的词性 :return:
-        替换编辑代价."""
+
+        替换编辑代价.
+        """
         if a_pos == b_pos:
             return 0
         elif a_pos in self._open_pos and b_pos in self._open_pos:
@@ -144,8 +150,12 @@ class Alignment:
 
     def _get_spell_cost(self, a, b, pinyin_a, pinyin_b):
         """计算两个单词拼写相似度，分别由字形相似度和字音相似度组成 :param a: 单词a :param b:
-        单词b，且单词a的长度小于等于b :param pinyin_a: 单词a的拼音 :param pinyin_b: 单词b的拼音
-        :return: 替换操作cost."""
+
+        单词b，且单词a的长度小于等于b
+        :param pinyin_a: 单词a的拼音
+        :param pinyin_b: 单词b的拼音
+        :return: 替换操作cost.
+        """
         count = 0
         for i in range(len(a)):
             for j in range(len(b)):
