@@ -38,8 +38,7 @@ APTED_JAR_PATH = 'apted.jar'
 def tree_edit_distance(tree_a, tree_b):
     """We use APTED algorithm proposed by M.
 
-    Pawlik and N. Augsten
-    github link: https://github.com/DatabaseGroup/apted
+    Pawlik and N. Augsten github link: https://github.com/DatabaseGroup/apted
     """
     p = Popen(['java', '-jar', APTED_JAR_PATH, '-t', tree_a, tree_b], stdout=PIPE, stderr=STDOUT)
 

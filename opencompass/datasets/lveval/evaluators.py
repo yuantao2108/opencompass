@@ -1,7 +1,6 @@
 """Functions for computing metrics.
 
-Part of following code are modified from `
-https://github.com/THUDM/LongBench`
+Part of following code are modified from ` https://github.com/THUDM/LongBench`
 """
 
 import re

@@ -74,8 +74,11 @@ class Classifier:
                  tgt,
                  edits,
                  verbose: bool = False):
-        """为编辑操作划分错误类型 :param src: 错误句子信息 :param tgt: 正确句子信息 :param edits: 编辑操作
-        :param verbose: 是否打印信息 :return: 划分完错误类型后的编辑操作."""
+        """为编辑操作划分错误类型 :param src: 错误句子信息 :param tgt: 正确句子信息 :param edits:
+        编辑操作.
+
+        :param verbose: 是否打印信息 :return: 划分完错误类型后的编辑操作.
+        """
         results = []
         src_tokens = [x[0] for x in src]
         tgt_tokens = [x[0] for x in tgt]
