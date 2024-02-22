@@ -20,15 +20,12 @@ class LVEvallicDataset(BaseDataset):
             confusing_facts = dataset[split]["confusing_facts"][i]
             answer_keywords = dataset[split]["answer_keywords"][i]
             answers_with_ak = answers + [answer_keywords]
-            raw_data.append(
-                {
-                    "input": question,
-                    "context": context,
-                    # 'answers': answers,
-                    "answers": answers_with_ak,
-                    "confusing_facts": confusing_facts,
-                    "answer_keywords": answer_keywords,
-                }
-            )
+            raw_data.append({
+                "input": question,
+                "context": context,
+                "answers": answers_with_ak,
+                "confusing_facts": confusing_facts,
+                "answer_keywords": answer_keywords,
+            })
         dataset[split] = Dataset.from_list(raw_data)
         return dataset

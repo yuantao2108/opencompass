@@ -1,19 +1,18 @@
 """Functions for computing metrics.
-
-Part of following code are modified from `https://github.com/THUDM/LongBench/blob/a80fd111d6e5fe1735eb7be53fece976706f8e0c/metrics.py`
+Part of following code are modified from 
+`https://github.com/THUDM/LongBench/blob/main/metrics.py`
 """
 
 import re
-import jieba
 import string
-from rouge import Rouge
-from typing import List
 from collections import Counter
+from typing import List
 
+import jieba
+from rouge import Rouge
 
 from opencompass.openicl.icl_evaluator import BaseEvaluator
 from opencompass.registry import ICL_EVALUATORS
-
 
 ABANDON_WORDS_EN = [
     "and",
@@ -218,11 +217,9 @@ class LVEvalF1Evaluator(BaseEvaluator):
 
                 else:
                     prediction_tokens = list(
-                        jieba.cut(prediction, cut_all=False)
-                    )
-                    reference_tokens = list(
-                        jieba.cut(reference, cut_all=False)
-                    )
+                        jieba.cut(prediction, cut_all=False))
+                    reference_tokens = list(jieba.cut(reference,
+                                                      cut_all=False))
                     prediction_tokens = [
                         normalize_zh_answer(token)
                         for token in prediction_tokens
@@ -238,9 +235,8 @@ class LVEvalF1Evaluator(BaseEvaluator):
                         token for token in reference_tokens if len(token) > 0
                     ]
 
-                task_score = max(
-                    task_score, f1_score(prediction_tokens, reference_tokens)
-                )
+                task_score = max(task_score,
+                                 f1_score(prediction_tokens, reference_tokens))
                 break
 
             score += task_score
@@ -258,6 +254,7 @@ class LVEvalOPTF1Evaluator(BaseEvaluator):
         self.language = language
 
     def score(self, predictions: List, references: List) -> dict:
+
         def f1_score(prediction, reference, **kwargs):
             common = Counter(prediction) & Counter(reference)
             num_same = sum(common.values())
@@ -284,12 +281,10 @@ class LVEvalOPTF1Evaluator(BaseEvaluator):
                     # answer keywords recall
                     if answer_keyword:
                         answer_keyword_tokens = normalize_answer(
-                            answer_keyword
-                        )
+                            answer_keyword)
                         answer_keyword_tokens = answer_keyword_tokens.split()
                         common = Counter(prediction_tokens) & Counter(
-                            answer_keyword_tokens
-                        )
+                            answer_keyword_tokens)
                         filtered_common = {
                             key: value
                             for key, value in common.items()
@@ -301,11 +296,9 @@ class LVEvalOPTF1Evaluator(BaseEvaluator):
                             break
                 else:
                     prediction_tokens = list(
-                        jieba.cut(prediction, cut_all=False)
-                    )
-                    reference_tokens = list(
-                        jieba.cut(reference, cut_all=False)
-                    )
+                        jieba.cut(prediction, cut_all=False))
+                    reference_tokens = list(jieba.cut(reference,
+                                                      cut_all=False))
                     prediction_tokens = [
                         normalize_zh_answer(token)
                         for token in prediction_tokens
@@ -324,20 +317,17 @@ class LVEvalOPTF1Evaluator(BaseEvaluator):
                         answer_keyword = reference
                     if answer_keyword:
                         answer_keyword_tokens = list(
-                            jieba.cut(answer_keyword, cut_all=False)
-                        )
+                            jieba.cut(answer_keyword, cut_all=False))
                         answer_keyword_tokens = [
                             normalize_zh_answer(token)
                             for token in answer_keyword_tokens
                         ]
                         answer_keyword_tokens = [
-                            token
-                            for token in answer_keyword_tokens
+                            token for token in answer_keyword_tokens
                             if len(token) > 0
                         ]
                         common = Counter(prediction_tokens) & Counter(
-                            answer_keyword_tokens
-                        )
+                            answer_keyword_tokens)
                         filtered_common = {
                             key: value
                             for key, value in common.items()
@@ -348,9 +338,8 @@ class LVEvalOPTF1Evaluator(BaseEvaluator):
                         if recall < 0.4:
                             break
 
-                task_score = max(
-                    task_score, f1_score(prediction_tokens, reference_tokens)
-                )
+                task_score = max(task_score,
+                                 f1_score(prediction_tokens, reference_tokens))
                 break
 
             score += task_score
@@ -378,11 +367,9 @@ class LVEvalOPTRougeEvaluator(BaseEvaluator):
                 if self.language == "zh":
                     word_blacklist = ABANDON_WORDS_ZH
                     prediction_tokens = list(
-                        jieba.cut(prediction, cut_all=False)
-                    )
-                    reference_tokens = list(
-                        jieba.cut(reference, cut_all=False)
-                    )
+                        jieba.cut(prediction, cut_all=False))
+                    reference_tokens = list(jieba.cut(reference,
+                                                      cut_all=False))
                     prediction_tokens = [
                         normalize_zh_answer(token)
                         for token in prediction_tokens
@@ -409,9 +396,8 @@ class LVEvalOPTRougeEvaluator(BaseEvaluator):
 
                 rouge = Rouge()
                 try:
-                    cur_score = rouge.get_scores(
-                        [prediction], [reference], avg=True
-                    )["rouge-l"]["f"]
+                    cur_score = rouge.get_scores([prediction], [reference],
+                                                 avg=True)["rouge-l"]["f"]
                 except Exception:
                     cur_score = 0.0
                 task_score = max(task_score, cur_score)

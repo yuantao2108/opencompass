@@ -18,13 +18,11 @@ class LVEvalfactrecallzhDataset(BaseDataset):
             context = dataset[split]["context"][i]
             answers = dataset[split]["answers"][i]
             confusing_facts = dataset[split]["confusing_facts"][i]
-            raw_data.append(
-                {
-                    "input": question,
-                    "context": context,
-                    "answers": answers,
-                    "confusing_facts": confusing_facts,
-                }
-            )
+            raw_data.append({
+                "input": question,
+                "context": context,
+                "answers": answers,
+                "confusing_facts": confusing_facts,
+            })
         dataset[split] = Dataset.from_list(raw_data)
         return dataset
