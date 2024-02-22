@@ -14,4 +14,3 @@ models[0][
 models[0]["max_seq_len"] = 32768
 models[0]["generation_kwargs"] = dict(do_sample=False)
 models[0]["mode"] = "mid"  # truncate in the middle
-b

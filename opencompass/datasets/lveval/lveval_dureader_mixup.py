@@ -11,16 +11,16 @@ class LVEvaldureaderDataset(BaseDataset):
     @staticmethod
     def load(**kwargs):
         dataset = load_dataset(**kwargs)
-        split = "test"
+        split = 'test'
         raw_data = []
         for i in range(len(dataset[split])):
-            question = dataset[split]["input"][i]
-            context = dataset[split]["context"][i]
-            answers = dataset[split]["answers"][i]
+            question = dataset[split]['input'][i]
+            context = dataset[split]['context'][i]
+            answers = dataset[split]['answers'][i]
             raw_data.append({
-                "input": question,
-                "context": context,
-                "answers": answers,
+                'input': question,
+                'context': context,
+                'answers': answers,
             })
         dataset[split] = Dataset.from_list(raw_data)
         return dataset
