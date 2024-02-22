@@ -99,12 +99,15 @@ class CJRCEvaluator:
         return {'em': em_sum / max(1, len(a_gold_list)), 'f1': f1_sum / max(1, len(a_gold_list))}
 
     def compute_turn_score(self, qid, a_pred):
-        ''' This is the function what you are probably looking for. a_pred is the answer string your model predicted. '''
+        """This is the function what you are probably looking for.
+
+        a_pred is the answer string your model predicted.
+        """
         a_gold_list = self.gold_data[qid]
         return CJRCEvaluator._compute_turn_score(a_gold_list, a_pred)
 
     def get_raw_scores(self, pred_data):
-        ''''Returns a dict with score'''
+        """'Returns a dict with score."""
         exact_scores = {}
         f1_scores = {}
         for qid in self.gold_data:
@@ -119,9 +122,7 @@ class CJRCEvaluator:
         return exact_scores, f1_scores
 
     def get_raw_scores_human(self):
-        '''
-        Returns a dict with score
-        '''
+        """Returns a dict with score."""
         exact_scores = {}
         f1_scores = {}
         for qid in self.gold_data:

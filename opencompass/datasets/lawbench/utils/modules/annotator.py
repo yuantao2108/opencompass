@@ -18,9 +18,7 @@ class Annotator:
 
     @classmethod
     def create_default(cls, granularity: str = "word", strategy: str = "first"):
-        """
-        Default parameters used in the paper
-        """
+        """Default parameters used in the paper."""
         semantic_dict, semantic_class = read_cilin()
         confusion_dict = read_confusion()
         align = Alignment(semantic_dict, confusion_dict, granularity)
@@ -33,9 +31,7 @@ class Annotator:
                  tgt: List[Tuple],
                  annotator_id: int = 0,
                  verbose: bool = False):
-        """
-        Align sentences and annotate them with error type information
-        """
+        """Align sentences and annotate them with error type information."""
         src_tokens = [x[0] for x in src]
         tgt_tokens = [x[0] for x in tgt]
         src_str = "".join(src_tokens)

@@ -10,17 +10,14 @@ english_punct = punctuation
 punct = chinese_punct + english_punct
 
 def check_all_chinese(word):
-    """
-    判断一个单词是否全部由中文组成
-    :param word:
+    """判断一个单词是否全部由中文组成 :param word:
+
     :return:
     """
     return all(['\u4e00' <= ch <= '\u9fff' for ch in word])
 
 def read_cilin():
-    """
-    Cilin 詞林 is a thesaurus with semantic information
-    """
+    """Cilin 詞林 is a thesaurus with semantic information."""
     # TODO -- fix this path
     lines = open(os.path.join(os.path.dirname(__file__), "..", "..", "..", "..", "..", "data", "lawbench", "eval_assets", "cilin.txt"), "r", encoding="gbk").read().strip().split("\n")
     semantic_dict = {}
@@ -46,10 +43,7 @@ def read_confusion():
     return confusion_dict
 
 class Alignment:
-    """
-    对齐错误句子和正确句子，
-    使用编辑距离算法抽取编辑操作
-    """
+    """对齐错误句子和正确句子， 使用编辑距离算法抽取编辑操作."""
 
     def __init__(
             self,
@@ -57,11 +51,8 @@ class Alignment:
             confusion_dict: Dict,
             granularity: str = "word",
             ) -> None:
-        """
-        构造函数
-        :param semantic_dict: 语义词典（大词林）
-        :param confusion_dict: 字符混淆集
-        """
+        """构造函数 :param semantic_dict: 语义词典（大词林） :param confusion_dict:
+        字符混淆集."""
         self.insertion_cost = 1
         self.deletion_cost = 1
         self.semantic_dict = semantic_dict
@@ -108,21 +99,14 @@ class Alignment:
 
     @staticmethod
     def _get_class_diff(a_class, b_class):
-        """
-        d == 3 for equivalent semantics
-        d == 0 for completely different semantics
-        根据大词林的信息，计算两个词的语义类别的差距
-        """
+        """D == 3 for equivalent semantics d == 0 for completely different
+        semantics 根据大词林的信息，计算两个词的语义类别的差距."""
         d = sum([a == b for a, b in zip(a_class, b_class)])
         return d
 
     def _get_semantic_cost(self, a, b):
-        """
-        计算基于语义信息的替换操作cost
-        :param a: 单词a的语义类别
-        :param b: 单词b的语义类别
-        :return: 替换编辑代价
-        """
+        """计算基于语义信息的替换操作cost :param a: 单词a的语义类别 :param b: 单词b的语义类别 :return:
+        替换编辑代价."""
         a_class = self._get_semantic_class(a)
         b_class = self._get_semantic_class(b)
         # unknown class, default to 1
@@ -134,12 +118,8 @@ class Alignment:
             return 2 * (3 - self._get_class_diff(a_class, b_class))
 
     def _get_pos_cost(self, a_pos, b_pos):
-        """
-        计算基于词性信息的编辑距离cost
-        :param a_pos: 单词a的词性
-        :param b_pos: 单词b的词性
-        :return: 替换编辑代价
-        """
+        """计算基于词性信息的编辑距离cost :param a_pos: 单词a的词性 :param b_pos: 单词b的词性 :return:
+        替换编辑代价."""
         if a_pos == b_pos:
             return 0
         elif a_pos in self._open_pos and b_pos in self._open_pos:
@@ -163,14 +143,9 @@ class Alignment:
             return self._get_spell_cost(a, b, pinyin_a, pinyin_b)
 
     def _get_spell_cost(self, a, b, pinyin_a, pinyin_b):
-        """
-        计算两个单词拼写相似度，分别由字形相似度和字音相似度组成
-        :param a: 单词a
-        :param b: 单词b，且单词a的长度小于等于b
-        :param pinyin_a: 单词a的拼音
-        :param pinyin_b: 单词b的拼音
-        :return: 替换操作cost
-        """
+        """计算两个单词拼写相似度，分别由字形相似度和字音相似度组成 :param a: 单词a :param b:
+        单词b，且单词a的长度小于等于b :param pinyin_a: 单词a的拼音 :param pinyin_b: 单词b的拼音
+        :return: 替换操作cost."""
         count = 0
         for i in range(len(a)):
             for j in range(len(b)):
@@ -180,10 +155,8 @@ class Alignment:
         return (len(a) - count) / (len(a) * 2)
 
     def get_sub_cost(self, a_seg, b_seg):
-        """
-        Calculate the substitution cost between words a and b
-        计算两个单词替换操作的编辑cost，最大为2，等于一次删除和一次添加
-        """
+        """Calculate the substitution cost between words a and b
+        计算两个单词替换操作的编辑cost，最大为2，等于一次删除和一次添加."""
         if a_seg[0] == b_seg[0]:
             return 0
 
@@ -207,15 +180,10 @@ class Alignment:
     def align(self,
               src: List[Tuple],
               tgt: List[Tuple]):
-        """
-        Based on ERRANT's alignment
-        基于改进的动态规划算法，为原句子的每个字打上编辑标签，以便使它能够成功转换为目标句子。
-        编辑操作类别：
-        1) M：Match，即KEEP，即当前字保持不变
-        2) D：Delete，删除，即当前字需要被删除
-        3) I：Insert，插入，即当前字需要被插入
-        4) T：Transposition，移位操作，即涉及到词序问题
-        """
+        """Based on ERRANT's alignment
+        基于改进的动态规划算法，为原句子的每个字打上编辑标签，以便使它能够成功转换为目标句子。 编辑操作类别： 1)
+        M：Match，即KEEP，即当前字保持不变 2) D：Delete，删除，即当前字需要被删除 3)
+        I：Insert，插入，即当前字需要被插入 4) T：Transposition，移位操作，即涉及到词序问题."""
         cost_matrix = np.zeros((len(src) + 1, len(tgt) + 1))  # 编辑cost矩阵
         oper_matrix = np.full(
             (len(src) + 1, len(tgt) + 1), "O", dtype=object
@@ -288,9 +256,7 @@ class Alignment:
         return cost_matrix, oper_matrix
 
     def _dfs(self, i, j, align_seq_now, oper_matrix, strategy="all"):
-        """
-        深度优先遍历，获取最小编辑距离相同的所有序列
-        """
+        """深度优先遍历，获取最小编辑距离相同的所有序列."""
         if i + j == 0:
             self.align_seqs.append(align_seq_now)
         else:
@@ -308,9 +274,7 @@ class Alignment:
                     self._dfs(i - k, j - k, align_seq_now + [(op, i - k, i, j - k, j)], oper_matrix, strategy)
 
     def get_cheapest_align_seq(self, oper_matrix):
-        """
-        回溯获得编辑距离最小的编辑序列
-        """
+        """回溯获得编辑距离最小的编辑序列."""
         self.align_seqs = []
         i = oper_matrix.shape[0] - 1
         j = oper_matrix.shape[1] - 1

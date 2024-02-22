@@ -1,6 +1,5 @@
 from ..utils.comprehension_scores import compute_ie_f1
 
-
 """
 task: information extraction
 metric: F1 score

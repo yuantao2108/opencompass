@@ -138,6 +138,7 @@ class BasicTokenizer(object):
 
   def __init__(self, do_lower_case=True):
     """Constructs a BasicTokenizer.
+
     Args:
       do_lower_case: Whether to lower case the input.
     """
@@ -257,6 +258,7 @@ class WordpieceTokenizer(object):
 
   def tokenize(self, text):
     """Tokenizes a piece of text into its word pieces.
+
     This uses a greedy longest-match-first algorithm to perform tokenization
     using the given vocabulary.
     For example:

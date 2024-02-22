@@ -6,9 +6,7 @@ import os
 import functools
 
 class Tokenizer:
-    """
-    分词器
-    """
+    """分词器."""
 
     def __init__(self,
                  granularity: str = "word",
@@ -16,10 +14,7 @@ class Tokenizer:
                  segmented: bool = False,
                  bpe: bool = False,
                  ) -> None:
-        """
-        构造函数
-        :param mode: 分词模式，可选级别：字级别（char）、词级别（word）
-        """
+        """构造函数 :param mode: 分词模式，可选级别：字级别（char）、词级别（word）"""
         self.ltp = None 
         if granularity == "word":
             self.ltp = LTP(device=torch.device(device) if torch.cuda.is_available() else torch.device("cpu"))
@@ -39,22 +34,15 @@ class Tokenizer:
     def __call__(self,
                  input_strings: List[str]
                  ) -> List:
-        """
-        分词函数
-        :param input_strings: 需要分词的字符串列表
-        :return: 分词后的结果列表，由元组组成，元组为(token,pos_tag,pinyin)的形式
-        """
+        """分词函数 :param input_strings: 需要分词的字符串列表 :return:
+        分词后的结果列表，由元组组成，元组为(token,pos_tag,pinyin)的形式."""
         if not self.segmented:
             input_strings = ["".join(s.split(" ")) for s in input_strings]
         results = self.tokenizer(input_strings)
         return results
 
     def split_char(self, input_strings: List[str], bpe=False) -> List:
-        """
-        分字函数
-        :param input_strings: 需要分字的字符串
-        :return: 分字结果
-        """
+        """分字函数 :param input_strings: 需要分字的字符串 :return: 分字结果."""
         if bpe:
             from . import tokenization
             tokenizer = tokenization.FullTokenizer(vocab_file=os.path.join(os.path.dirname(__file__), "..", "..", "..", "..", "..", "data", "lawbench", "eval_assets", "chinese_vocab.txt"), do_lower_case=False)
@@ -70,11 +58,7 @@ class Tokenizer:
         return results
 
     def split_word(self, input_strings: List[str]) -> List:
-        """
-        分词函数
-        :param input_strings: 需要分词的字符串
-        :return: 分词结果
-        """
+        """分词函数 :param input_strings: 需要分词的字符串 :return: 分词结果."""
         if self.segmented:
             seg, hidden = self.ltp.seg([input_string.split(" ") for input_string in input_strings], is_preseged=True)
         else:

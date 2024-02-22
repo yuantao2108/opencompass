@@ -1,5 +1,4 @@
 ### Copy from https://github.com/iqiyi/FASPell ###
-
 """
 Requirements:
  - java (required only if tree edit distance is used)
@@ -37,8 +36,9 @@ APTED_JAR_PATH = 'apted.jar'
 
 
 def tree_edit_distance(tree_a, tree_b):
-    """
-    We use APTED algorithm proposed by M. Pawlik and N. Augsten
+    """We use APTED algorithm proposed by M.
+
+    Pawlik and N. Augsten
     github link: https://github.com/DatabaseGroup/apted
     """
     p = Popen(['java', '-jar', APTED_JAR_PATH, '-t', tree_a, tree_b], stdout=PIPE, stderr=STDOUT)
@@ -227,8 +227,9 @@ class CharFuncs(object):
         return data
 
     def similarity(self, char1, char2, weights=(0.8, 0.2, 0.0), as_tree=False):
-        """
-        this function returns weighted similarity. When used in FASPell, each weight can only be 0 or 1.
+        """This function returns weighted similarity.
+
+        When used in FASPell, each weight can only be 0 or 1.
         """
 
         # assert char1 in self.char_dict
@@ -338,8 +339,9 @@ class CharFuncs(object):
 
 
 def string_to_tree(string):
-    """
-    This function converts ids string to a string that can be used as a tree input to APTED.
+    """This function converts ids string to a string that can be used as a tree
+    input to APTED.
+
     Any Error raised by this function implies that the input string is invalid.
     >>> string_to_tree('⿱⿱⿰丿㇏⿰丿㇏⿱⿰丿㇏⿰丿㇏')  # 炎
     '{⿱{⿱{⿰{丿}{㇏}}{⿰{丿}{㇏}}}{⿱{⿰{丿}{㇏}}{⿰{丿}{㇏}}}}'

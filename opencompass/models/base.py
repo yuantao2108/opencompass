@@ -363,8 +363,8 @@ class LMTemplateParser:
         template.
 
         Return the index ranges of each round. Specifically,
-        prompt_template[res[i]:res[i+1]] represents the i-th round in the
-        template.
+        prompt_template[res[i]:res[i+1]] represents the i-th round in
+        the template.
         """
         role_idxs = {
             role_cfg['role']: i

@@ -11,7 +11,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-""" ROUGE metric from Google Research github repo. """
+"""ROUGE metric from Google Research github repo."""
 
 # The dependencies in https://github.com/google-research/google-research/blob/master/rouge/requirements.txt
 import absl  # Here to have a nice missing dependency error message early on
@@ -81,7 +81,8 @@ Examples:
 
 
 class Tokenizer:
-    """Helper class to wrap a callable into a class with a `tokenize` method as used by rouge-score."""
+    """Helper class to wrap a callable into a class with a `tokenize` method as
+    used by rouge-score."""
 
     def __init__(self, tokenizer_func):
         self.tokenizer_func = tokenizer_func

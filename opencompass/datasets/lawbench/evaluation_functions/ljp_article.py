@@ -10,9 +10,9 @@ def replace_match(match):
     return match.group(1)
 
 def compute_ljp_article(data_dict):
-    """
-    Compute the F1-score
-    A reference contains a list of articles of the Criminal Law of the People's Republic of China.
+    """Compute the F1-score A reference contains a list of articles of the
+    Criminal Law of the People's Republic of China.
+
     We compute the F1-score between the prediction and the reference.
     """
 

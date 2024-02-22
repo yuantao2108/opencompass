@@ -34,7 +34,6 @@ models = [*hf_qwen_7b_base_models, *hf_qwen_7b_chat_models]
 datasets = [*base_ceval_datasets, *chat_ceval_datasets]
 
 work_dir = './outputs/default/mdcomb/'
-
 """
 dataset                 version    metric    mode    qwen-7b-hf    qwen-7b-chat-hf
 ----------------------  ---------  --------  ------  ------------  -----------------

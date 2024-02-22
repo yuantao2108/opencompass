@@ -6,9 +6,7 @@ from modules.alignment import Alignment, read_cilin, read_confusion
 import Levenshtein
 
 class Merger:
-    """
-    合并编辑操作，从Token-Level转换为Span-Level
-    """
+    """合并编辑操作，从Token-Level转换为Span-Level."""
 
     def __init__(self,
                  granularity: str = "word",
@@ -59,9 +57,7 @@ class Merger:
                  src: List,
                  tgt: List,
                  verbose: bool = False):
-        """
-        Based on ERRANT's merge, adapted for Chinese
-        """
+        """Based on ERRANT's merge, adapted for Chinese."""
         src_tokens = [x[0] for x in src]
         tgt_tokens = [x[0] for x in tgt]
         edits = []

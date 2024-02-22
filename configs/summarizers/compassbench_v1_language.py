@@ -50,7 +50,6 @@ summarizer = dict(
         ['content_summarization_zh', 'rouge1'],
         ['traditional_cultural_understanding_zh_circular', 'acc_origin'],
         ['chinese_semantic_understanding_zh_circular', 'acc_origin'],
-
         'language_perf_4_and_non_mcq',
         'language_en_perf_4_and_non_mcq',
         'language_zh_perf_4_and_non_mcq',

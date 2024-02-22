@@ -1,7 +1,6 @@
 from ..utils.function_utils import compute_f1_two_sets
 from ..utils.rc_f1 import CJRCEvaluator
 
-
 """
 task: event detection
 metric: F1 score
@@ -10,12 +9,11 @@ metric: F1 score
 option_list = ["支付/给付", "欺骗", "搜查/扣押", "要求/请求", "卖出", "买入", "获利", "拘捕", "鉴定", "同意/接受", "供述", "联络", "帮助/救助", "租用/借用", "受伤", "伪造", "卖淫", "伤害人身", "赔偿", "归还/偿还"]
 
 def compute_sjjc(data_dict):
-    """
-    Compute the F1-score
-    The sjjc task covers 20 event types.
-    A question may involve one or more event types.
-    Given a list of event types from both the ground truth and the prediction, we compute the F1-score between
-    these two lists.
+    """Compute the F1-score The sjjc task covers 20 event types.
+
+    A question may involve one or more event types. Given a list of
+    event types from both the ground truth and the prediction, we
+    compute the F1-score between these two lists.
     """
     score_list, abstentions = [], 0
 

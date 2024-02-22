@@ -8,11 +8,10 @@ import ast
 import numpy as np
 
 class InstructEvaluator:
-    """Instruct Following Evaluation
+    """Instruct Following Evaluation.
 
     Args:
         dataset_path(str): File path of evaluation dataset.
-
     """
 
     def __init__(

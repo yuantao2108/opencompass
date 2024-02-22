@@ -38,8 +38,6 @@ for m in _origin_models:
 
 datasets = teval_en_datasets + teval_zh_datasets
 work_dir = './outputs/teval'
-
-
 '''
 dataset                                      version    metric          mode       qwen-7b-chat-hf    internlm2-chat-7b-hf    llama-2-7b-chat-hf
 -------------------------------------------  ---------  --------------  -------  -----------------  ----------------------  --------------------

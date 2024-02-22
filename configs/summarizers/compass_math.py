@@ -29,7 +29,6 @@ summarizer = dict(
         ['compassbench_v1_math-middle-single_choice_en', 'acc_1'],
         ['compassbench_v1_math-primary-cloze_cn', 'accuracy'],
         ['compassbench_v1_math-primary-cloze_en', 'accuracy'],
-
         'math_perf_4_and_fill_in_blank',
         ['compassbench_v1_math-high-single_choice_cn', 'perf_4'],
         ['compassbench_v1_math-high-single_choice_en', 'perf_4'],

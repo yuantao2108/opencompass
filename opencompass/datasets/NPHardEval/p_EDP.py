@@ -97,8 +97,10 @@ class p_EDP_Evaluator(BaseEvaluator):
     def edp_check(self, instance, solution):
         """Check if the edit distance solution is valid.
 
-        :param instance: The instance dictionary with 'string_a' and 'string_b'.
-        :param solution: The solution dictionary with the reported 'edit_distance'.
+        :param instance: The instance dictionary with 'string_a' and
+            'string_b'.
+        :param solution: The solution dictionary with the reported
+            'edit_distance'.
         :return: A tuple of (is_correct, message).
         """
         string_a = instance['string_a']

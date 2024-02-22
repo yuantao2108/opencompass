@@ -44,12 +44,12 @@ option_list = ["侮辱", "违法发放贷款", "失火", "票据诈骗", "帮助
 
 
 def compute_ljp_accusation(data_dict):
-    """
-    Compute the F1-score
-    The LJP_Accusation dataset a set of 189 different accusation types.
-    A question may involve one or more accusation types.
-    Given a list of accusation types from both the ground truth and the prediction, we compute the F1-score between
-    these two lists.
+    """Compute the F1-score The LJP_Accusation dataset a set of 189 different
+    accusation types.
+
+    A question may involve one or more accusation types. Given a list of
+    accusation types from both the ground truth and the prediction, we
+    compute the F1-score between these two lists.
     """
     score_list, abstentions = [], 0
 

@@ -3,9 +3,7 @@ from ..utils.function_utils import compute_rouge
 #情景法条识别
 
 def compute_cjft(data_dict):
-    """
-    Compute the ROUGE-L score between the prediction and the reference
-    """
+    """Compute the ROUGE-L score between the prediction and the reference."""
     references, predictions = [], []
     for example in data_dict:
         question, prediction, answer = example["origin_prompt"], example["prediction"], example["refr"]

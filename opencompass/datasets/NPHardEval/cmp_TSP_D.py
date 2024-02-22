@@ -122,7 +122,8 @@ class cmp_TSP_D_Evaluator(BaseEvaluator):
     def tsp_approx(self, distance_matrix):
         """Returns an approximate solution to the TSP problem.
 
-        :param distance_matrix: A 2D numpy array representing the distance matrix.
+        :param distance_matrix: A 2D numpy array representing the
+            distance matrix.
         :return: A list of the cities in the order they were visited.
         """
         G = nx.from_numpy_array(distance_matrix)
@@ -132,7 +133,8 @@ class cmp_TSP_D_Evaluator(BaseEvaluator):
         """Checks if a given TSP tour is valid and within the threshold
         distance.
 
-        :param distance_matrix: A 2D numpy array representing the distance matrix.
+        :param distance_matrix: A 2D numpy array representing the
+            distance matrix.
         :param threshold: The maximum distance allowed.
         :param tour: A dictionary containing the feasibility.
         """

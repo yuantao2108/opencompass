@@ -65,9 +65,7 @@ class ReasonRetrieveUnderstandEvaluator:
         self.valid_data_count = total_count - total_error
 
     def format_load(self, data):
-        r'''
-            ensure evaluator can work correctly under any data input
-        '''
+        r"""Ensure evaluator can work correctly under any data input."""
         try:
             json_format = format_load(data, start_character='{', end_character='}')
         except Exception as e:
@@ -105,6 +103,7 @@ class ReasonRetrieveUnderstandEvaluator:
         datum,
     ) -> ResponseDataSample:
         """Process the response to needed format.
+
         Args:
             datum(dict): inputs.
         Returns:
@@ -146,8 +145,7 @@ class ReasonRetrieveUnderstandEvaluator:
         return ResponseDataSample(template = '', pred=pred, gt=gt), error
 
     def _evaluate(self, data_sample):
-        """Evaluate the response data sample.
-        """
+        """Evaluate the response data sample."""
         # To enable batch evaluation, the evaluator is written at post_process.
         return data_sample
 
@@ -289,9 +287,7 @@ class ReasonRetrieveUnderstandEvaluatorNoBatch:
         self.valid_data_count = total_count - total_error
 
     def format_load(self, data):
-        r'''
-            ensure evaluator can work correctly under any data input
-        '''
+        r"""Ensure evaluator can work correctly under any data input."""
         if type(data) == dict:
             json_format = data
         else:
@@ -330,6 +326,7 @@ class ReasonRetrieveUnderstandEvaluatorNoBatch:
         datum,
     ) -> ResponseDataSample:
         """Process the response to needed format.
+
         Args:
             datum(dict): inputs.
         Returns:
@@ -378,8 +375,7 @@ class ReasonRetrieveUnderstandEvaluatorNoBatch:
         return ResponseDataSample(template = '', pred=pred, gt=gt), error
 
     def _evaluate(self, data_sample) -> dict:
-        """Evaluate the response data sample.
-        """
+        """Evaluate the response data sample."""
         metrics_result = {
             'thought': 0,
             'name': 0,

@@ -6,12 +6,10 @@ metric: accuracy
 金额提取
 """
 def compute_jetq(data_dict):
-    """
-    Compute the Accuracy
-    we extract the total amount of cost involved in the crime from the prediction and compare it with the reference
-    The prediction is correct if
-    the total amount of cost provided in the reference, appears in the prediction.
-    """
+    """Compute the Accuracy we extract the total amount of cost involved in the
+    crime from the prediction and compare it with the reference The prediction
+    is correct if the total amount of cost provided in the reference, appears
+    in the prediction."""
     score_list, abstentions = [], 0
 
     for example in data_dict:

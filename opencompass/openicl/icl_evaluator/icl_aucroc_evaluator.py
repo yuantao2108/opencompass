@@ -14,7 +14,8 @@ class AUCROCEvaluator(BaseEvaluator):
 
     For some dataset, the accuracy cannot reveal the difference between
     models because of the saturation. AUC-ROC scores can further exam
-    model abilities to distinguish different labels. More details can refer to
+    model abilities to distinguish different labels. More details can
+    refer to
     https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html
     """  # noqa
 

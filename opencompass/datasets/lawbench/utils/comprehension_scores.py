@@ -1,7 +1,6 @@
 import re
 from ..utils.rc_f1 import CJRCEvaluator
 
-
 """
 given a target substring. find its all occurances in the string s
 return the starting and ending index of every occurance

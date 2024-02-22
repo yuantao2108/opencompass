@@ -5,13 +5,13 @@ metric: F1 score
 """
 
 def compute_wbfl(data_dict):
-    """
-    A reference (R) contains a list of options, each option is from the option_list.
-    We will extract the options appearing in the prediction and convert them into a set (P).
-    We compute the F1 score between the prediction (P) and the reference (R).
-    """
+    """A reference (R) contains a list of options, each option is from the
+    option_list.
 
-
+    We will extract the options appearing in the prediction and convert
+    them into a set (P). We compute the F1 score between the prediction
+    (P) and the reference (R).
+    """
     score_list, abstentions = [], 0
     option_list = ["婚后有子女", "限制行为能力子女抚养", "有夫妻共同财产", "支付抚养费", "不动产分割", "婚后分局",
                    "二次起诉离婚", "按月给付抚养费", "准予离婚", "有夫妻共同债务", "婚前个人财产", "法定离婚", "不履行家庭义务",

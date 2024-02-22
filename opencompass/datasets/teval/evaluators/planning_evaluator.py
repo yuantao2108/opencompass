@@ -64,9 +64,7 @@ class PlanningEvaluator:
         self.valid_data_count = total_count - total_error
 
     def format_load(self, data):
-        r'''
-            ensure evaluator can work correctly under any data input
-        '''
+        r"""Ensure evaluator can work correctly under any data input."""
         try:
             json_format = format_load(data, start_character='[', end_character=']')
         except Exception as e:
@@ -89,6 +87,7 @@ class PlanningEvaluator:
         datum,
     ) -> ResponseDataSample:
         """Process the response to needed format.
+
         Args:
             datum(dict): inputs.
         Returns:
@@ -240,10 +239,9 @@ class PlanningEvaluator:
         return self._post_process(results_list)
 
     def permutation_match(self, pred_plan, gt_plan) -> dict:
-        '''
-            The function calculates all the permutation matches' score and selects the max f1_score;
-            Since permutation is time consuming, we truncate the length of plans to 9
-        '''
+        """The function calculates all the permutation matches' score and
+        selects the max f1_score; Since permutation is time consuming, we
+        truncate the length of plans to 9."""
         if pred_plan[-1]['name'] != 'FinishAction':
             pred_plan.append(
                 {'id': len(pred_plan), 'prev': [], 'name': 'FinishAction', 'args': r'\{\}'}
@@ -300,13 +298,15 @@ class PlanningEvaluator:
         }
 
     def bertscore_match(self, pred_plan, gt_plan) -> dict:
-        """
-            Calculate the similarity between predicted plan and golden answer,
-            A plan can be regarded a sequence of actions, and each action has a name and args.
-            Firstly, use bertscore to calculate pointwise similarity by:
-                similarity(u, v) = bertscore(u.name, v.name) * name_weight + bertscore(u.args, v.args) * args_weight;
-            Secondly, use Hungarian matching to match the points;
-            Finally, use LIS to calculate the number of matched nodes.
+        """Calculate the similarity between predicted plan and golden answer, A
+        plan can be regarded a sequence of actions, and each action has a name
+        and args.
+
+        Firstly, use bertscore to calculate pointwise similarity by:
+        similarity(u, v) = bertscore(u.name, v.name) * name_weight +
+        bertscore(u.args, v.args) * args_weight; Secondly, use Hungarian
+        matching to match the points; Finally, use LIS to calculate the
+        number of matched nodes.
         """
         if len(pred_plan) == 0 or len(gt_plan) == 0:
             return {

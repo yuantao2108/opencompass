@@ -6,11 +6,10 @@ import numpy as np
 from ..utils.format_load import format_load
 
 class ReviewEvaluator:
-    """Review Capability Evaluation
+    """Review Capability Evaluation.
 
     Args:
         dataset_path(str): File path of evaluation dataset.
-
     """
 
     def __init__(

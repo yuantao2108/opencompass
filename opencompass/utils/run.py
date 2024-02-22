@@ -14,8 +14,8 @@ from opencompass.utils import get_logger, match_files
 def match_cfg_file(workdir: str, pattern: Union[str, List[str]]) -> List[str]:
     """Match the config file in workdir recursively given the pattern.
 
-    Additionally, if the pattern itself points to an existing file, it will be
-    directly returned.
+    Additionally, if the pattern itself points to an existing file, it
+    will be directly returned.
     """
     if isinstance(pattern, str):
         pattern = [pattern]
@@ -132,7 +132,7 @@ def get_config_from_arg(args) -> Config:
 
 
 def exec_mm_infer_runner(tasks, args, cfg):
-    """execute multimodal infer runner according to args."""
+    """Execute multimodal infer runner according to args."""
     if args.slurm:
         runner = SlurmRunner(dict(type='MultimodalInferTask'),
                              max_num_workers=args.max_num_workers,
