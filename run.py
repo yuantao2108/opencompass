@@ -280,10 +280,10 @@ def main():
             tasks = partitioner(cfg)
             exec_mm_infer_runner(tasks, args, cfg)
             return
-
+        
         if args.dlc or args.slurm or cfg.get('infer', None) is None:
             fill_infer_cfg(cfg, args)
-
+        
         if args.partition is not None:
             if RUNNERS.get(cfg.infer.runner.type) == SlurmRunner:
                 cfg.infer.runner.partition = args.partition
@@ -299,6 +299,7 @@ def main():
                                                     'predictions/')
         partitioner = PARTITIONERS.build(cfg.infer.partitioner)
         tasks = partitioner(cfg)
+        
         if args.dry_run:
             return
         runner = RUNNERS.build(cfg.infer.runner)

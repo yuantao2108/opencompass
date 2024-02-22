@@ -11,10 +11,8 @@ models = [
     dict(
         type=HuggingFaceChatGLM3,
         abbr='chatglm3-6b-32k-hf',
-        # path='THUDM/chatglm3-6b-32k',
-        path='/home/yuantao/workspace/link/public_models/chatglm3-6b-32k',
-        # tokenizer_path='THUDM/chatglm3-6b-32k',
-        tokenizer_path='/home/yuantao/workspace/link/public_models/chatglm3-6b-32k',
+        path='THUDM/chatglm3-6b-32k',
+        tokenizer_path='THUDM/chatglm3-6b-32k',
         model_kwargs=dict(
             device_map='auto',
             trust_remote_code=True,
@@ -24,13 +22,9 @@ models = [
             truncation_side='left',
             trust_remote_code=True,
         ),
-        generation_kwargs=dict(
-            do_sample=False # fixed outputs
-        ),
-        mode='mid', # truncate in the middle
         meta_template=api_meta_template,
         max_out_len=100,
-        max_seq_len=32768,# 4096,
+        max_seq_len=4096,
         batch_size=1,
         run_cfg=dict(num_gpus=1, num_procs=1)
     )

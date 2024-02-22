@@ -11,10 +11,8 @@ models = [
     dict(
         type=HuggingFaceCausalLM,
         abbr='llama-2-7b-chat-hf',
-        # path="meta-llama/Llama-2-7b-chat-hf",
-        path="/home/yuantao/workspace/link/public_models/Llama-2-7b-chat-hf",
-        # tokenizer_path='meta-llama/Llama-2-7b-chat-hf',
-        tokenizer_path="/home/yuantao/workspace/link/public_models/Llama-2-7b-chat-hf",
+        path="meta-llama/Llama-2-7b-chat-hf",
+        tokenizer_path='meta-llama/Llama-2-7b-chat-hf',
         model_kwargs=dict(
             device_map='auto'
         ),
@@ -23,10 +21,6 @@ models = [
             truncation_side='left',
             use_fast=False,
         ),
-        generation_kwargs=dict(
-            do_sample=False
-        ),
-        mode='mid', # truncate in the middle
         meta_template=_meta_template,
         max_out_len=100,
         max_seq_len=2048,
