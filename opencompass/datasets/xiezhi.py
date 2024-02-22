@@ -63,12 +63,11 @@ class XiezhiRetriever(BaseRetriever):
     def retrieve(self):
         """Retrieve in-context examples for each test case.
 
-        For each one of the in-context example, there is a list of
-        label, indicating the categories to which the example is
-        related. For each one of the test case, there is also a list of
-        label, indicating the categories. This retriever will retrieve
-        the in-context examples that share at least one label with the
-        test case.
+        For each one of the in-context example, there is a list of label,
+        indicating the categories to which the example is related. For each one
+        of the test case, there is also a list of label, indicating the
+        categories. This retriever will retrieve the in-context examples that
+        share at least one label with the test case.
         """
         label2indice = {}
         for index, item in enumerate(self.index_ds):

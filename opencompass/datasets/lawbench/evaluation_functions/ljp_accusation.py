@@ -48,8 +48,8 @@ def compute_ljp_accusation(data_dict):
     accusation types.
 
     A question may involve one or more accusation types. Given a list of
-    accusation types from both the ground truth and the prediction, we
-    compute the F1-score between these two lists.
+    accusation types from both the ground truth and the prediction, we compute
+    the F1-score between these two lists.
     """
     score_list, abstentions = [], 0
 

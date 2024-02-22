@@ -305,8 +305,8 @@ class PlanningEvaluator:
         Firstly, use bertscore to calculate pointwise similarity by:
         similarity(u, v) = bertscore(u.name, v.name) * name_weight +
         bertscore(u.args, v.args) * args_weight; Secondly, use Hungarian
-        matching to match the points; Finally, use LIS to calculate the
-        number of matched nodes.
+        matching to match the points; Finally, use LIS to calculate the number
+        of matched nodes.
         """
         if len(pred_plan) == 0 or len(gt_plan) == 0:
             return {

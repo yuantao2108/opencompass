@@ -1,8 +1,7 @@
 class QwenVLMMBenchPromptConstructor:
     """MMBench prompt constructor for Qwen-VL.
 
-    The output is a dict following the input format of Qwen-VL
-    tokenizer.
+    The output is a dict following the input format of Qwen-VL tokenizer.
     """
 
     def __init__(self) -> None:

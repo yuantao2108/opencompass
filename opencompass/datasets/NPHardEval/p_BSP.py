@@ -104,10 +104,9 @@ class p_BSP_Evaluator(BaseEvaluator):
     def bsp_check(self, instance, solution):
         """Check if the binary search solution is valid.
 
-        :param instance: The instance dictionary with array and target
-            value.
-        :param solution: The solution dictionary with the position of
-            the target value.
+        :param instance: The instance dictionary with array and target value.
+        :param solution: The solution dictionary with the position of the
+            target value.
         :return: A tuple of (is_correct, message).
         """
         array = sorted(instance['array'])

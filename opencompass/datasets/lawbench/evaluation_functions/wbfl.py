@@ -8,9 +8,9 @@ def compute_wbfl(data_dict):
     """A reference (R) contains a list of options, each option is from the
     option_list.
 
-    We will extract the options appearing in the prediction and convert
-    them into a set (P). We compute the F1 score between the prediction
-    (P) and the reference (R).
+    We will extract the options appearing in the prediction and convert them
+    into a set (P). We compute the F1 score between the prediction (P) and the
+    reference (R).
     """
     score_list, abstentions = [], 0
     option_list = ["婚后有子女", "限制行为能力子女抚养", "有夫妻共同财产", "支付抚养费", "不动产分割", "婚后分局",

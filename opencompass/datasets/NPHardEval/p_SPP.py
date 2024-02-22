@@ -114,8 +114,8 @@ class p_SPP_Evaluator(BaseEvaluator):
     def ssp_optimal_solution(self, instance, source, target):
         """Provides the optimal solution for the SSP instance.
 
-        :param instance: The SSP instance as a dictionary with 'nodes'
-            and 'edges'.
+        :param instance: The SSP instance as a dictionary with 'nodes' and
+            'edges'.
         :param source: The source node.
         :param target: The destination node.
         :return: The optimal shortest path length and path.

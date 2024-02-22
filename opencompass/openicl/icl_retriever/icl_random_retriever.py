@@ -15,8 +15,8 @@ class RandomRetriever(BaseRetriever):
     """Random Retriever. Each in-context example of the test prompts is
     retrieved in a random way.
 
-    **WARNING**: This class has not been tested thoroughly. Please use
-    it with caution.
+    **WARNING**: This class has not been tested thoroughly. Please use it with
+    caution.
     """
 
     def __init__(self,

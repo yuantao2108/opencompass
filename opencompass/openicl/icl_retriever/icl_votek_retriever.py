@@ -15,8 +15,8 @@ from opencompass.openicl.icl_retriever.icl_topk_retriever import TopkRetriever
 class VotekRetriever(TopkRetriever):
     """Vote-k In-context Learning Retriever, subclass of `TopkRetriever`.
 
-    **WARNING**: This class has not been tested thoroughly. Please use
-    it with caution.
+    **WARNING**: This class has not been tested thoroughly. Please use it with
+    caution.
     """
 
     def __init__(self,

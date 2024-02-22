@@ -184,10 +184,10 @@ class hard_TSP_Evaluator(BaseEvaluator):
     def greedy_tsp(self, distance_matrix):
         """Solve the Traveling Salesman Problem using a greedy algorithm.
 
-        :param distance_matrix: 2D numpy array where the element at [i,
-            j] is the distance between city i and j
-        :return: A tuple containing a list of the cities in the order
-            they were visited and the total distance
+        :param distance_matrix: 2D numpy array where the element at [i, j] is
+            the distance between city i and j
+        :return: A tuple containing a list of the cities in the order they were
+            visited and the total distance
         """
         num_cities = distance_matrix.shape[0]
         unvisited_cities = set(range(num_cities))

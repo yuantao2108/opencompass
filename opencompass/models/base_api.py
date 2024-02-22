@@ -76,9 +76,9 @@ class BaseAPIModel(BaseModel):
         """Ensure simultaneous emptying of stdout and stderr when concurrent
         resources are available.
 
-        When employing multiprocessing with standard I/O redirected to
-        files, it is crucial to clear internal data for examination or
-        prevent log loss in case of system failures."
+        When employing multiprocessing with standard I/O redirected to files,
+        it is crucial to clear internal data for examination or prevent log
+        loss in case of system failures."
         """
         if hasattr(self, 'tokens'):
             sys.stdout.flush()
@@ -87,8 +87,8 @@ class BaseAPIModel(BaseModel):
     def acquire(self):
         """Acquire concurrent resources if exists.
 
-        This behavior will fall back to wait with query_per_second if
-        there are no concurrent resources.
+        This behavior will fall back to wait with query_per_second if there are
+        no concurrent resources.
         """
         if hasattr(self, 'tokens'):
             self.tokens.acquire()
@@ -98,8 +98,8 @@ class BaseAPIModel(BaseModel):
     def release(self):
         """Release concurrent resources if acquired.
 
-        This behavior will fall back to do nothing if there are no
-        concurrent resources.
+        This behavior will fall back to do nothing if there are no concurrent
+        resources.
         """
         if hasattr(self, 'tokens'):
             self.tokens.release()
@@ -322,8 +322,8 @@ class APITemplateParser:
         template.
 
         Return the index ranges of each round. Specifically,
-        prompt_template[res[i]:res[i+1]] represents the i-th round in
-        the template.
+        prompt_template[res[i]:res[i+1]] represents the i-th round in the
+        template.
         """
         role_idxs = {
             role_cfg['role']: i

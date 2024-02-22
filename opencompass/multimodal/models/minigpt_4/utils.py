@@ -25,9 +25,9 @@ class StoppingCriteriaSub(StoppingCriteria):
 def download_cached_file(url, check_hash=True, progress=False):
     """Download a file from a URL and cache it locally.
 
-    If the file already exists, it is not downloaded again. If
-    distributed, only the main process downloads the file, and the other
-    processes wait for the file to be downloaded.
+    If the file already exists, it is not downloaded again. If distributed,
+    only the main process downloads the file, and the other processes wait for
+    the file to be downloaded.
     """
 
     def get_cached_file_path():

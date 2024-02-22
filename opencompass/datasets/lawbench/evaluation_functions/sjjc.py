@@ -11,9 +11,9 @@ option_list = ["支付/给付", "欺骗", "搜查/扣押", "要求/请求", "卖
 def compute_sjjc(data_dict):
     """Compute the F1-score The sjjc task covers 20 event types.
 
-    A question may involve one or more event types. Given a list of
-    event types from both the ground truth and the prediction, we
-    compute the F1-score between these two lists.
+    A question may involve one or more event types. Given a list of event types
+    from both the ground truth and the prediction, we compute the F1-score
+    between these two lists.
     """
     score_list, abstentions = [], 0
 
