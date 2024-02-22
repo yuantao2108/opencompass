@@ -27,6 +27,10 @@ def main():
     if datasets:
         table = [['Dataset', 'Config Path'], *datasets]
         print(tabulate.tabulate(table, headers='firstrow', tablefmt='psql'))
+    summarizer = match_files('configs/summarizers/', args.pattern, fuzzy=True)
+    if summarizer:
+        table = [['Summarizer', 'Config Path'], *summarizer]
+        print(tabulate.tabulate(table, headers='firstrow', tablefmt='psql'))
 
 
 if __name__ == '__main__':

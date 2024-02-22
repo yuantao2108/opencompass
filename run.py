@@ -1,3 +1,4 @@
+import numpy
 import argparse
 import getpass
 import os
@@ -279,10 +280,10 @@ def main():
             tasks = partitioner(cfg)
             exec_mm_infer_runner(tasks, args, cfg)
             return
-
+        
         if args.dlc or args.slurm or cfg.get('infer', None) is None:
             fill_infer_cfg(cfg, args)
-
+        
         if args.partition is not None:
             if RUNNERS.get(cfg.infer.runner.type) == SlurmRunner:
                 cfg.infer.runner.partition = args.partition
@@ -298,6 +299,7 @@ def main():
                                                     'predictions/')
         partitioner = PARTITIONERS.build(cfg.infer.partitioner)
         tasks = partitioner(cfg)
+        
         if args.dry_run:
             return
         runner = RUNNERS.build(cfg.infer.runner)
@@ -306,9 +308,11 @@ def main():
             for task in tasks:
                 cfg.attack.dataset = task.datasets[0][0].abbr
                 task.attack = cfg.attack
+        
         runner(tasks)
 
     # evaluate
+    
     if args.mode in ['all', 'eval']:
         # When user have specified --slurm or --dlc, or have not set
         # "eval" in config, we will provide a default configuration
@@ -340,16 +344,19 @@ def main():
         tasks = partitioner(cfg)
         if args.dry_run:
             return
+        
         runner = RUNNERS.build(cfg.eval.runner)
         runner(tasks)
 
     # visualize
     if args.mode in ['all', 'eval', 'viz']:
+        
         summarizer_cfg = cfg.get('summarizer', {})
         if not summarizer_cfg or summarizer_cfg.get('type', None) is None:
             summarizer_cfg['type'] = DefaultSummarizer
         summarizer_cfg['config'] = cfg
         summarizer = build_from_cfg(summarizer_cfg)
+        
         summarizer.summarize(time_str=cfg_time_str)
 
 
